@@ -1,0 +1,21 @@
+version: '3.5'
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+      #    user: 1001:1001
+    volumes:
+      - type: bind
+        source: ./srv/config
+        target: /config
+      - type: bind
+        source: ./srv/cache
+        target: /cache
+      - type: bind
+        source: ./srv/media
+        target: /media
+      - type: bind
+        source: ./data
+        target: /media/data
+    ports:
+      - 8096:8096
